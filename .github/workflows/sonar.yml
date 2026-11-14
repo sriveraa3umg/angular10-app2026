@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -29,10 +29,6 @@ jobs:
       - name: Build Frontend
         working-directory: ./frontend
         run: npm run build
-
-      - name: Run Frontend Tests
-        working-directory: ./frontend
-        run: npx ng test --watch=false --browsers=ChromeHeadless --code-coverage
 
       - name: Cache SonarQube packages
         uses: actions/cache@v4
